@@ -6,14 +6,15 @@ exports.handler = async (event) => {
     let body;
     try{
         body = event["body"];
-
+        console.log(body)
+;
     } catch(e){
         body = null;
     }
 
     const response = {
         statusCode: 200,
-        body: JSON.stringify('Hello from lambda', body),
+        body: JSON.stringify(body),
     };
     return response;
 };
