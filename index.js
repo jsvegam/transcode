@@ -5,6 +5,8 @@ exports.handler = async (event, context) => {
     // TODO implemet change
     let body;
     console.log(event);
+    console.log(context);
+
     console.log(event["code"]);
     try{
         body = event["body"];
