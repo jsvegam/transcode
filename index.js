@@ -5,7 +5,7 @@ exports.handler = async (event) => {
     // TODO implemet change
     let body;
     try{
-        accessCode = event["body"];
+        body = event["body"];
 
     } catch(e){
         body = null;
