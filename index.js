@@ -1,9 +1,10 @@
 const AWS = require('aws-sdk');
 const url = require('url');
 
-exports.handler = async (event) => {
+exports.handler = async (event, context) => {
     // TODO implemet change
     let body;
+    console.log(event);
     try{
         body = event["body"];
         console.log(body)
