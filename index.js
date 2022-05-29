@@ -1,6 +1,7 @@
 const url = require('url');
 const axios = require('axios');
 const Name = "test_desa_secrets";
+const request = require("request");
 var AWS = require('aws-sdk'),
     region = "us-east-1",
     secretName = "test/clave-unica",
@@ -83,17 +84,17 @@ exports.handler = async (event, context) => {
     const { API_Client_Id, API_Client_Secret } = JSON.parse(usuario);    
 
     const data = {
-        'client_id'     : API_Client_Id,
-        'client_secret' : API_Client_Secret,
-        'grant_type'    : process.env.GRAND_TYPE,
-        'scope'         : process.env.SCOPE,
-        'username'      : process.env.USER,
-        'password'      : process.env.PASS,
+        'client_id'     : "c527b0bb20feee7f52d16cfc5c7e2486",
+        'client_secret' : "dcfca4a67aa8529dee458e57228c9cbe",
+        'grant_type'    : "password",
+        'scope'         : "scope",
+        'username'      : "10002652K",
+        'password'      : "1234",
     }  
 
     axios({
         method : 'post',
-        url    : api_url, 
+        url    : "https://apipp.bancoripley.cl/banco-ripley/pre-produccion/oidc-clu-password/oauth2/token", 
         headers: headers,
         data   : qs.stringify(data)
     })
