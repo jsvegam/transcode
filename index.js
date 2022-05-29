@@ -55,7 +55,6 @@ client.getSecretValue({SecretId: secretName}, function(err, data) {
 exports.handler = async (event, context) => {
     // TODO implemet change
     let body;
-    console.log(event);
 
     try{
         body = event;
@@ -117,7 +116,7 @@ exports.handler = async (event, context) => {
 
 
     } catch(e){
-        body = null;
+        body = e.message;
     }
 
     const response = {
