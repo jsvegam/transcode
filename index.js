@@ -44,34 +44,34 @@ exports.handler = async (event, context) => {
 
         // //consume CU br
 
-        // const { API_Client_Id, API_Client_Secret } = JSON.parse(usuario);    
+        //const { API_Client_Id, API_Client_Secret } = JSON.parse(usuario);    
 
-        // const data = {
-        //     'client_id'     : "c527b0bb20feee7f52d16cfc5c7e2486",
-        //     'client_secret' : "dcfca4a67aa8529dee458e57228c9cbe",
-        //     'grant_type'    : "password",
-        //     'scope'         : "scope",
-        //     'username'      : "10002652K",
-        //     'password'      : "1234",
-        // }  
+        const data = {
+            'client_id'     : "c527b0bb20feee7f52d16cfc5c7e2486",
+            'client_secret' : "dcfca4a67aa8529dee458e57228c9cbe",
+            'grant_type'    : "password",
+            'scope'         : "scope",
+            'username'      : "10002652K",
+            'password'      : "1234",
+        }  
 
-        // axios({
-        //     method : 'post',
-        //     url    : "https://apipp.bancoripley.cl/banco-ripley/pre-produccion/oidc-clu-password/oauth2/token", 
-        //     headers: headers,
-        //     data   : qs.stringify(data)
-        // })
-        // .then(function (response) {
-        //     console.log("axios if");
-        //     if (response.status  == '200')
-        //     console.log("axios if 200")
-        //         console.log("Response axios 200: ", response.data);
-        // })
-        // .catch(function (error) {
-        //     console.log("axios error");
-        //     console.log("Error Code    : ", );
-        //     console.log("Error axios Message : ", error.message);
-        // })
+        axios({
+            method : 'post',
+            url    : "https://apipp.bancoripley.cl/banco-ripley/pre-produccion/oidc-clu-password/oauth2/token", 
+            headers: headers,
+            data   : qs.stringify(data)
+        })
+        .then(function (response) {
+            console.log("axios if");
+            if (response.status  == '200')
+            console.log("axios if 200")
+                console.log("Response axios 200: ", response.data);
+        })
+        .catch(function (error) {
+            console.log("axios error");
+            console.log("Error Code    : ", );
+            console.log("Error axios Message : ", error.message);
+        })
 
 
 
