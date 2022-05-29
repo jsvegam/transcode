@@ -99,10 +99,13 @@ exports.handler = async (event, context) => {
         data   : qs.stringify(data)
     })
     .then(function (response) {
+        console.log("axios if");
         if (response.status  == '200')
+        console.log("axios if 200")
             console.log("Response axios 200: ", response.data);
     })
     .catch(function (error) {
+        console.log("axios error");
         console.log("Error Code    : ", );
         console.log("Error axios Message : ", error.message);
     })
