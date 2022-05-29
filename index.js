@@ -5,14 +5,10 @@ exports.handler = async (event, context) => {
     // TODO implemet change
     let body;
     console.log(event);
-    console.log(context);
-
-    console.log(event["code"]);
-    console.log(event.headers);
     try{
-        body = event["code"];
-        console.log(body)
-;
+        body = event;
+        //body = event["ClientSecret"];
+        console.log(body);
     } catch(e){
         body = null;
     }
