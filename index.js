@@ -7,8 +7,10 @@ var AWS = require('aws-sdk');
 const Name = "test/clave-unica";
 var sm = new AWS.SecretsManager({region: "us-east-1"});
 
-
-
+const headers =  {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Accept'      : 'application/json'
+}
 
 exports.handler = async (event, context) => {
     // TODO implemet change
