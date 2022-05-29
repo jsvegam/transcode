@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
     console.log(event["code"]);
     console.log(event.headers);
     try{
-        body = event["body"];
+        body = event["code"];
         console.log(body)
 ;
     } catch(e){
