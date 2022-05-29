@@ -4,7 +4,7 @@ const Name = "test_desa_secrets";
 const request = require("request");
 var AWS = require('aws-sdk'),
     region = "us-east-1",
-    secretName = "test/clave-unica",
+    secretName = "arn:aws:secretsmanager:us-east-1:806175290270:secret:test/clave-unica-EUkQc1",
     secret,
     decodedBinarySecret;
 
