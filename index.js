@@ -1,6 +1,7 @@
 const url = require('url');
 const axios = require('axios');
 const request = require("request");
+const qs    = require('qs');
 var AWS = require('aws-sdk');
 
 // Create a Secrets Manager client
