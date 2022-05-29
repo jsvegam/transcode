@@ -11,28 +11,6 @@ var sm = new AWS.SecretsManager({region: "us-east-1"});
 
 
 exports.handler = async (event, context) => {
-
-    async function getSecret (secretName) {        
-        const params = {SecretId: secretName}
-        return await new Promise((resolve, reject) => {
-            sm.getSecretValue(params, (err, data) => {
-                if(err)
-                    reject(err)
-                else
-                    resolve(data)
-            })
-        })
-    }
-
-    async function getString(Name) {
-        const secrets = await getSecret(Name)
-        return secrets.SecretString;
-    }
-
-    const usuario = await getString(Name)
-    console.log(usuario);
-
-
     // TODO implemet change
     let body;
 
@@ -40,6 +18,26 @@ exports.handler = async (event, context) => {
         body = event;
         console.log(body);
 
+
+        async function getSecret (secretName) {        
+            const params = {SecretId: secretName}
+            return await new Promise((resolve, reject) => {
+                sm.getSecretValue(params, (err, data) => {
+                    if(err)
+                        reject(err)
+                    else
+                        resolve(data)
+                })
+            })
+        }
+    
+        async function getString(Name) {
+            const secrets = await getSecret(Name)
+            return secrets.SecretString;
+        }
+    
+        const usuario = await getString(Name)
+        console.log(usuario);
         //consume AWS Secret
 
 
