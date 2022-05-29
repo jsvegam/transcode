@@ -64,7 +64,7 @@ exports.handler = async (event, context) => {
         async function getSecret (secretName) {        
             const params = {SecretId: secretName}
             return await new Promise((resolve, reject) => {
-                sm.getSecretValue(params, (err, data) => {
+                client.getSecretValue(params, (err, data) => {
                     if(err)
                         reject(err)
                     else
