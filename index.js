@@ -99,11 +99,11 @@ exports.handler = async (event, context) => {
     })
     .then(function (response) {
         if (response.status  == '200')
-            console.log("Response : ", response.data);
+            console.log("Response axios 200: ", response.data);
     })
     .catch(function (error) {
         console.log("Error Code    : ", );
-        console.log("Error Message : ", error.message);
+        console.log("Error axios Message : ", error.message);
     })
 
 
