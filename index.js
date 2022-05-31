@@ -49,7 +49,7 @@ exports.handler = async (event, context) => {
 
         // //consume CU br
 
-        //const { API_Client_Id, API_Client_Secret } = JSON.parse(usuario);    
+        const { API_Client_Id, API_Client_Secret } = JSON.parse(usuario);    
 
         const data = {
             'client_id'     : API_Client_Id,
