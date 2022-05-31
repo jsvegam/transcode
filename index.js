@@ -80,7 +80,7 @@ exports.handler = async (event, context) => {
         });
     
     // recepcion de la respuesta
-    const body = await promise;
+    body = await promise;
 
         // axios({
         //     method : 'post',
