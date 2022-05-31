@@ -21,11 +21,11 @@ exports.handler = async (event, context) => {
     let clientID;
 
     try{
+
+
         body = event;
-        //clientID = event["clientID"] 
-        console.log(body);
 
-
+        //Obtiene secretos desde AWS crednciales para poder consumir como canal API/BUS
         async function getSecret (secretName) {        
             const params = {SecretId: secretName}
             return await new Promise((resolve, reject) => {
@@ -45,11 +45,6 @@ exports.handler = async (event, context) => {
     
         const usuario = await getString(Name)
         console.log(usuario);
-        //consume AWS Secret
-
-
-
-        // //consume CU br
 
         const { API_Client_Id, API_Client_Secret } = JSON.parse(usuario);    
 
@@ -62,9 +57,7 @@ exports.handler = async (event, context) => {
             'password'      : event["ClientSecret"],
         }  
 
-        body = data;
-
-
+        // Realiza llamada a Clave unica
         const promise = new Promise(function(resolve, reject) {
             request.post({url:endpoint, form: data}, async function(err,httpResponse,body){
                 if(err)
@@ -79,35 +72,15 @@ exports.handler = async (event, context) => {
             });
         });
     
-    // recepcion de la respuesta
+    // recepcion de la respuesta del servicio de clave unica, esto se debe tratara para retornar los mensajes 
+    // de error 401 en 200
     body = await promise;
-
-        // axios({
-        //     method : 'post',
-        //     url    : "https://apipp.bancoripley.cl/banco-ripley/pre-produccion/oidc-clu-password/oauth2/token", 
-        //     headers: headers,
-        //     data   : qs.stringify(data)
-        // })
-        // .then(function (response) {
-        //     console.log("axios if");
-        //     if (response.status  == '200')
-        //     console.log("axios if 200")
-        //         console.log("Response axios 200: ", response.data);
-        // })
-        // .catch(function (error) {
-        //     console.log("axios error");
-        //     console.log("Error Code    : ", );
-        //     console.log("Error axios Message : ", error.message);
-        // })
-
-
-
-
 
     } catch(e){
         body = e.message;
     }
 
+    // Respuesta de la funcion
     const response = {
         statusCode: 200,
         body: JSON.stringify(body),
