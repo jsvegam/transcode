@@ -16,9 +16,11 @@ const headers =  {
 exports.handler = async (event, context) => {
     // TODO implemet change xxxxx
     let body;
+    let clientID;
 
     try{
         body = event;
+        //clientID = event["clientID"] 
         console.log(body);
 
 
@@ -50,12 +52,12 @@ exports.handler = async (event, context) => {
         //const { API_Client_Id, API_Client_Secret } = JSON.parse(usuario);    
 
         const data = {
-            'client_id'     : "c527b0bb20feee7f52d16cfc5c7e2486",
-            'client_secret' : "dcfca4a67aa8529dee458e57228c9cbe",
+            'client_id'     : API_Client_Id,
+            'client_secret' : API_Client_Secret,
             'grant_type'    : "password",
             'scope'         : "scope",
-            'username'      : "10002652K",
-            'password'      : "1234",
+            'username'      : event["ClientID"],
+            'password'      : event["ClientSecret"],
         }  
 
         axios({
