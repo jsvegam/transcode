@@ -60,6 +60,8 @@ exports.handler = async (event, context) => {
             'password'      : event["ClientSecret"],
         }  
 
+        body = data;
+
         axios({
             method : 'post',
             url    : "https://apipp.bancoripley.cl/banco-ripley/pre-produccion/oidc-clu-password/oauth2/token", 
