@@ -13,6 +13,8 @@ const headers =  {
     'Accept'      : 'application/json'
 }
 
+const endpoint = "https://apipp.bancoripley.cl/banco-ripley/pre-produccion/oidc-clu-password/oauth2/token";
+
 exports.handler = async (event, context) => {
     // TODO implemet change xxxxx
     let body;
@@ -62,23 +64,41 @@ exports.handler = async (event, context) => {
 
         body = data;
 
-        axios({
-            method : 'post',
-            url    : "https://apipp.bancoripley.cl/banco-ripley/pre-produccion/oidc-clu-password/oauth2/token", 
-            headers: headers,
-            data   : qs.stringify(data)
-        })
-        .then(function (response) {
-            console.log("axios if");
-            if (response.status  == '200')
-            console.log("axios if 200")
-                console.log("Response axios 200: ", response.data);
-        })
-        .catch(function (error) {
-            console.log("axios error");
-            console.log("Error Code    : ", );
-            console.log("Error axios Message : ", error.message);
-        })
+
+        const promise = new Promise(function(resolve, reject) {
+            request.post({url:endpoint, form: data}, async function(err,httpResponse,body){
+                if(err)
+                {
+                    reject(err);
+                }
+                else
+                {
+                    let parsedBody = JSON.parse(body);
+                    resolve(parsedBody);
+                }
+            });
+        });
+    
+    // recepcion de la respuesta
+    const body = await promise;
+
+        // axios({
+        //     method : 'post',
+        //     url    : "https://apipp.bancoripley.cl/banco-ripley/pre-produccion/oidc-clu-password/oauth2/token", 
+        //     headers: headers,
+        //     data   : qs.stringify(data)
+        // })
+        // .then(function (response) {
+        //     console.log("axios if");
+        //     if (response.status  == '200')
+        //     console.log("axios if 200")
+        //         console.log("Response axios 200: ", response.data);
+        // })
+        // .catch(function (error) {
+        //     console.log("axios error");
+        //     console.log("Error Code    : ", );
+        //     console.log("Error axios Message : ", error.message);
+        // })
 
 
 
